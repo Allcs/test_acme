@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Details</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="app" class="card" aria-busy="true">
+
+    <!-- Loading state -->
+    <div id="loadingState" class="loading-state">
+      <div class="skeleton-avatar"></div>
+      <div class="skeleton-lines">
+        <div class="skeleton-line w-60"></div>
+        <div class="skeleton-line w-40"></div>
+      </div>
+    </div>
+
+    <!-- Error state -->
+    <div id="errorState" class="error-state hidden">
+      <p id="errorMessage">Something went wrong loading this contact.</p>
+      <button id="retryBtn" class="btn btn-secondary">Retry</button>
+    </div>
+
+    <!-- Main content -->
+    <div id="mainContent" class="hidden">
+
+      <header class="card-header">
+        <div class="avatar" id="avatarInitials">--</div>
+        <div class="header-text">
+          <h1 id="fullNameHeading">&nbsp;</h1>
+          <p class="subtitle">Contact details</p>
+        </div>
+        <div class="header-actions">
+          <span id="statusPill" class="status-pill hidden"></span>
+          <button id="editBtn" class="btn btn-icon" title="Edit contact" aria-label="Edit contact">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 20h4l10.5-10.5a2.121 2.121 0 0 0-3-3L5 17v3Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.5 6.5 17.5 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Edit</span>
+          </button>
+        </div>
+      </header>
+
+      <form id="contactForm">
+
+        <section class="field-grid">
+          <div class="field">
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" name="First_Name" disabled />
+          </div>
+          <div class="field">
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" name="Last_Name" disabled />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="Phone" disabled />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" disabled />
+          </div>
+        </section>
+
+        <section class="address-section">
+          <div class="section-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21s-7-6.2-7-11.5a7 7 0 1 1 14 0C19 14.8 12 21 12 21Z" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+            <span>Address</span>
+          </div>
+
+          <div class="field-grid">
+            <div class="field field-postal">
+              <label for="postalCode">Postal code</label>
+              <div class="postal-input-row">
+                <input type="text" id="postalCode" name="Mailing_Zip" disabled placeholder="e.g. 90210" autocomplete="off" />
+                <button type="button" id="lookupBtn" class="btn btn-secondary btn-small hidden">Look up</button>
+              </div>
+              <span id="lookupStatus" class="field-hint"></span>
+            </div>
+            <div class="field">
+              <label for="street">Street address</label>
+              <input type="text" id="street" name="Mailing_Street" disabled placeholder="Manually entered" />
+            </div>
+            <div class="field">
+              <label for="city">City</label>
+              <input type="text" id="city" name="Mailing_City" disabled />
+            </div>
+            <div class="field">
+              <label for="state">State / Province</label>
+              <input type="text" id="state" name="Mailing_State" disabled />
+            </div>
+            <div class="field">
+              <label for="country">Country</label>
+              <input type="text" id="country" name="Mailing_Country" disabled />
+            </div>
+          </div>
+        </section>
+
+        <footer id="editActions" class="edit-actions hidden">
+          <span id="saveHint" class="save-hint"></span>
+          <div class="edit-actions-buttons">
+            <button type="button" id="cancelBtn" class="btn btn-secondary">Cancel</button>
+            <button type="submit" id="saveBtn" class="btn btn-primary">
+              <span class="btn-label">Save changes</span>
+              <span class="btn-spinner hidden"></span>
+            </button>
+          </div>
+        </footer>
+
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <script src="https://live.zwidgets.com/js-sdk/1.2/ZohoEmbededAppSDK.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
